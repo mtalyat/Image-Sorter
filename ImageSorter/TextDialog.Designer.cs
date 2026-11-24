@@ -28,70 +28,74 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Label = new System.Windows.Forms.Label();
-            this.TextBox = new System.Windows.Forms.TextBox();
-            this.CancelDialogButton = new System.Windows.Forms.Button();
-            this.AcceptDialogButton = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            Label = new Label();
+            TextBox = new TextBox();
+            CancelDialogButton = new Button();
+            AcceptDialogButton = new Button();
+            SuspendLayout();
             // 
             // Label
             // 
-            this.Label.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Label.AutoSize = true;
-            this.Label.Location = new System.Drawing.Point(12, 9);
-            this.Label.Name = "Label";
-            this.Label.Size = new System.Drawing.Size(45, 20);
-            this.Label.TabIndex = 0;
-            this.Label.Text = "Label";
+            Label.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            Label.AutoSize = true;
+            Label.Location = new Point(20, 14);
+            Label.Margin = new Padding(5, 0, 5, 0);
+            Label.Name = "Label";
+            Label.Size = new Size(70, 32);
+            Label.TabIndex = 0;
+            Label.Text = "Label";
             // 
             // TextBox
             // 
-            this.TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TextBox.Location = new System.Drawing.Point(12, 32);
-            this.TextBox.Name = "TextBox";
-            this.TextBox.Size = new System.Drawing.Size(421, 27);
-            this.TextBox.TabIndex = 1;
+            TextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            TextBox.Location = new Point(20, 51);
+            TextBox.Margin = new Padding(5, 5, 5, 5);
+            TextBox.Name = "TextBox";
+            TextBox.Size = new Size(683, 39);
+            TextBox.TabIndex = 1;
             // 
             // CancelDialogButton
             // 
-            this.CancelDialogButton.Location = new System.Drawing.Point(12, 73);
-            this.CancelDialogButton.Name = "CancelDialogButton";
-            this.CancelDialogButton.Size = new System.Drawing.Size(94, 29);
-            this.CancelDialogButton.TabIndex = 2;
-            this.CancelDialogButton.Text = "Cancel";
-            this.CancelDialogButton.UseVisualStyleBackColor = true;
-            this.CancelDialogButton.Click += new System.EventHandler(this.CancelButton_Click);
+            CancelDialogButton.Location = new Point(20, 117);
+            CancelDialogButton.Margin = new Padding(5, 5, 5, 5);
+            CancelDialogButton.Name = "CancelDialogButton";
+            CancelDialogButton.Size = new Size(153, 46);
+            CancelDialogButton.TabIndex = 2;
+            CancelDialogButton.Text = "Cancel";
+            CancelDialogButton.UseVisualStyleBackColor = true;
+            CancelDialogButton.Click += CancelButton_Click;
             // 
             // AcceptDialogButton
             // 
-            this.AcceptDialogButton.Location = new System.Drawing.Point(339, 73);
-            this.AcceptDialogButton.Name = "AcceptDialogButton";
-            this.AcceptDialogButton.Size = new System.Drawing.Size(94, 29);
-            this.AcceptDialogButton.TabIndex = 3;
-            this.AcceptDialogButton.Text = "Done";
-            this.AcceptDialogButton.UseVisualStyleBackColor = true;
-            this.AcceptDialogButton.Click += new System.EventHandler(this.AcceptButton_Click);
+            AcceptDialogButton.Location = new Point(551, 117);
+            AcceptDialogButton.Margin = new Padding(5, 5, 5, 5);
+            AcceptDialogButton.Name = "AcceptDialogButton";
+            AcceptDialogButton.Size = new Size(153, 46);
+            AcceptDialogButton.TabIndex = 3;
+            AcceptDialogButton.Text = "Done";
+            AcceptDialogButton.UseVisualStyleBackColor = true;
+            AcceptDialogButton.Click += AcceptButton_Click;
             // 
             // TextDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(445, 114);
-            this.ControlBox = false;
-            this.Controls.Add(this.AcceptDialogButton);
-            this.Controls.Add(this.CancelDialogButton);
-            this.Controls.Add(this.TextBox);
-            this.Controls.Add(this.Label);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Name = "TextDialog";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.Text = "TextDialog";
-            this.TopMost = true;
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(724, 179);
+            ControlBox = false;
+            Controls.Add(AcceptDialogButton);
+            Controls.Add(CancelDialogButton);
+            Controls.Add(TextBox);
+            Controls.Add(Label);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            Margin = new Padding(5, 5, 5, 5);
+            MinimumSize = new Size(750, 250);
+            Name = "TextDialog";
+            ShowIcon = false;
+            ShowInTaskbar = false;
+            Text = "TextDialog";
+            TopMost = true;
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 

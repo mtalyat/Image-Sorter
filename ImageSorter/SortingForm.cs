@@ -52,6 +52,7 @@ namespace ImageSorter
 
             // generate paths
             CollectImagePaths(directoryPath);
+            SortPathsByCaptureOrCreationDate();
 
             LoadImage(0);
 
@@ -296,6 +297,40 @@ namespace ImageSorter
             {
                 CollectImagePaths(path);
             }
+        }
+
+        private void SortPathsByCaptureOrCreationDate()
+        {
+            paths = paths
+                .OrderBy(GetCaptureOrCreationDateUtc)
+                .ThenBy(path => path, StringComparer.OrdinalIgnoreCase)
+                .ToList();
+        }
+
+        private static DateTime GetCaptureOrCreationDateUtc(string path)
+        {
+            try
+            {
+                using ShellFile shellFile = ShellFile.FromFilePath(path);
+
+                DateTime? dateTaken = shellFile.Properties.System.Photo.DateTaken.Value;
+                if (dateTaken.HasValue)
+                {
+                    return dateTaken.Value.ToUniversalTime();
+                }
+
+                DateTime? dateEncoded = shellFile.Properties.System.Media.DateEncoded.Value;
+                if (dateEncoded.HasValue)
+                {
+                    return dateEncoded.Value.ToUniversalTime();
+                }
+            }
+            catch
+            {
+                // Ignore metadata read failures and fallback to file creation time.
+            }
+
+            return File.GetCreationTimeUtc(path);
         }
 
         private void GenerateFolderTree()

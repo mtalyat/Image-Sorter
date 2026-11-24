@@ -37,7 +37,7 @@
             // 
             SelectFolderButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             SelectFolderButton.Location = new Point(20, 435);
-            SelectFolderButton.Margin = new Padding(5, 5, 5, 5);
+            SelectFolderButton.Margin = new Padding(5);
             SelectFolderButton.Name = "SelectFolderButton";
             SelectFolderButton.Size = new Size(525, 138);
             SelectFolderButton.TabIndex = 0;
@@ -48,11 +48,11 @@
             // ExtensionsRichTextBox
             // 
             ExtensionsRichTextBox.Location = new Point(20, 51);
-            ExtensionsRichTextBox.Margin = new Padding(5, 5, 5, 5);
+            ExtensionsRichTextBox.Margin = new Padding(5);
             ExtensionsRichTextBox.Name = "ExtensionsRichTextBox";
             ExtensionsRichTextBox.Size = new Size(522, 372);
             ExtensionsRichTextBox.TabIndex = 1;
-            ExtensionsRichTextBox.Text = ".png\n.jpeg\n.jpg\n.mov\n.gif\n.heic";
+            ExtensionsRichTextBox.Text = ".png\n.jpeg\n.jpg\n.mov\n.mp4\n.gif\n.heic";
             // 
             // label1
             // 
@@ -72,7 +72,7 @@
             Controls.Add(label1);
             Controls.Add(ExtensionsRichTextBox);
             Controls.Add(SelectFolderButton);
-            Margin = new Padding(5, 5, 5, 5);
+            Margin = new Padding(5);
             MaximizeBox = false;
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
