@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.WindowsAPICodePack.Dialogs;
+using Microsoft.WindowsAPICodePack.Shell;
 
 namespace ImageSorter
 {
@@ -89,9 +90,65 @@ namespace ImageSorter
         {
             currentIndex = index;
 
-            PreviewPictureBox.ImageLocation = currentPath;
+            LoadPreview(currentPath);
 
             SetTitle(currentPath);
+        }
+
+        private void LoadPreview(string path)
+        {
+            ClearPreviewImage();
+
+            if (!File.Exists(path))
+            {
+                return;
+            }
+
+            if (TryLoadImage(path, out Bitmap? preview) || TryLoadThumbnail(path, out preview))
+            {
+                PreviewPictureBox.Image = preview;
+            }
+        }
+
+        private static bool TryLoadImage(string path, out Bitmap? preview)
+        {
+            try
+            {
+                using Image image = Image.FromFile(path);
+                preview = new Bitmap(image);
+                return true;
+            }
+            catch
+            {
+                preview = null;
+                return false;
+            }
+        }
+
+        private static bool TryLoadThumbnail(string path, out Bitmap? preview)
+        {
+            try
+            {
+                using ShellFile shellFile = ShellFile.FromFilePath(path);
+                using Bitmap thumbnail = shellFile.Thumbnail.ExtraLargeBitmap;
+
+                preview = new Bitmap(thumbnail);
+                return true;
+            }
+            catch
+            {
+                preview = null;
+                return false;
+            }
+        }
+
+        private void ClearPreviewImage()
+        {
+            if (PreviewPictureBox.Image is Image oldImage)
+            {
+                PreviewPictureBox.Image = null;
+                oldImage.Dispose();
+            }
         }
 
         public void RenameCurrentImage(string name)
@@ -408,6 +465,8 @@ namespace ImageSorter
 
         private void SortingForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+            ClearPreviewImage();
+
             // when this form closes, open parent
             if (parentForm.WindowState == FormWindowState.Minimized)
             {
